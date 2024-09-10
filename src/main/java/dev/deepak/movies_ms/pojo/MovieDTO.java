@@ -1,24 +1,10 @@
 package dev.deepak.movies_ms.pojo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
-
 import java.util.List;
 
-@Document(collection = "Movie")
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-public class Movie {
-
-    @Id
-    private ObjectId id;
+public class MovieDTO {
 
     private  String imdbId;
 
@@ -32,22 +18,24 @@ public class Movie {
 
     private List<String> genres;
 
-    private  List<String> backdrops;
+    private  List<String> backDrops;
 
     @DocumentReference
     private List<Review> reviewIds;
 
-    public Movie( String imdbId, String title, String releaseDate, String trailerLink, String poster,
-			List<String> genres, List<String> backdrops, List<Review> reviewIds) {
+	
+
+    
+	public MovieDTO(String imdbId, String title, String releaseDate, String trailerLink, String poster,
+			List<String> genres, List<String> backDrops, List<Review> reviewIds) {
 		super();
-		this.id = id;
 		this.imdbId = imdbId;
 		this.title = title;
 		this.releaseDate = releaseDate;
 		this.trailerLink = trailerLink;
 		this.poster = poster;
 		this.genres = genres;
-		this.backdrops = backdrops;
+		this.backDrops = backDrops;
 		this.reviewIds = reviewIds;
 	}
 
@@ -100,11 +88,11 @@ public class Movie {
 	}
 
 	public List<String> getBackdrops() {
-		return backdrops;
+		return backDrops;
 	}
 
 	public void setBackdrops(List<String> backdrops) {
-		this.backdrops = backdrops;
+		this.backDrops = backdrops;
 	}
 
 	public List<Review> getReviewIds() {
@@ -114,9 +102,4 @@ public class Movie {
 	public void setReviewIds(List<Review> reviewIds) {
 		this.reviewIds = reviewIds;
 	}
-
-	
-    
-    
 }
-

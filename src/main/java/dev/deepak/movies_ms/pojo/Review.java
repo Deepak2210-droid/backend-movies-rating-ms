@@ -1,20 +1,48 @@
 package dev.deepak.movies_ms.pojo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "reviews")
-@Data
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Document(collection = "Review")
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Review {
 
-    @Id
-    private ObjectId id;
+	public Review(String body, String reviewId) {
+		super();
+		this.body = body;
+		this.reviewId = reviewId;
+	}
 
-    private String body;
+	@Id
+	private ObjectId id;
+
+	private String body;
+
+	private String reviewId;
+
+	
+
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+	public String getReviewId() {
+		return reviewId;
+	}
+
+	public void setReviewId(String reviewId) {
+		this.reviewId = reviewId;
+	}
+
 }
